@@ -378,6 +378,7 @@ defmodule Sobelow do
       "DOS.StringToAtom" -> Sobelow.DOS.StringToAtom
       "DOS.ListToAtom" -> Sobelow.DOS.ListToAtom
       "DOS.BinToAtom" -> Sobelow.DOS.BinToAtom
+      "DOS.DecompressionBomb" -> Sobelow.DOS.DecompressionBomb
       _ -> nil
     end
   end
@@ -387,6 +388,9 @@ defmodule Sobelow do
     |> Enum.map(&get_mod/1)
   end
 
+  def is_vuln?(findings) when is_list(findings) do
+    Enum.any?(findings, &is_vuln?/1)
+  end
   def is_vuln?({vars, _, _}) do
     cond do
       length(vars) == 0 ->

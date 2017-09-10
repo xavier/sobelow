@@ -1,7 +1,8 @@
 defmodule Sobelow.DOS do
   @submodules [Sobelow.DOS.StringToAtom,
                Sobelow.DOS.ListToAtom,
-               Sobelow.DOS.BinToAtom]
+               Sobelow.DOS.BinToAtom,
+               Sobelow.DOS.DecompressionBomb]
   use Sobelow.FindingType
 
   def get_vulns(fun, filename, _web_root, skip_mods \\ []) do
